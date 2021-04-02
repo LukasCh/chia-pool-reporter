@@ -22,16 +22,20 @@ const getReportBody = (callback) => {
 };
 
 const report = () => {
-  getReportBody((body) => {
-    axios
-      .post(`${Config.serverURL}/report`, body)
-      .then(function (response) {
-        //console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  });
+  try {
+    getReportBody((body) => {
+      axios
+        .post(`${Config.serverURL}/report`, body)
+        .then(function (response) {
+          //console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 report();
