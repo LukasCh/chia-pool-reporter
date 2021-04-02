@@ -39,4 +39,4 @@ const report = () => {
 };
 
 report();
-setInterval(() => report(myArgs[0]), INTERVAL);
+setInterval(() => report(), INTERVAL);
