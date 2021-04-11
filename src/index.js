@@ -1,9 +1,9 @@
 import axios from "axios";
 import Config from "./../config.js";
 const { exec } = require("child_process");
-
 const INTERVAL = 30 * 60 * 1000;
-const REPORT_COMMAND = `cd ${Config.chiaPath} && . ./activate && chia farm summary`;
+const isWin = process.platform === "win32";
+const REPORT_COMMAND = isWin ? `${Config.chiaPath}/chia.exe farm summary` : `cd ${Config.chiaPath} && . ./activate && chia farm summary`;
 
 const getReportBody = (callback) => {
   let body = { hash: Config.hash };
